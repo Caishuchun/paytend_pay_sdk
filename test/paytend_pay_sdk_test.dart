@@ -18,6 +18,5 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await PaytendPaySdk.platformVersion, '42');
   });
 }

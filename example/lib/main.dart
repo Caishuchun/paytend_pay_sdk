@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:paytend_pay_sdk/api/PayApi.dart';
 import 'package:paytend_pay_sdk/api/UnifiedOrderBean.dart';
+import 'package:paytend_pay_sdk/paytend_pay_sdk.dart';
 import 'package:paytend_pay_sdk/utils/Utils.dart';
 
 void main() {
@@ -36,40 +36,40 @@ class _HomeState extends State<Home> {
         },
         child: Center(
             child: Column(
-              children: [
-                RaisedButton(
-                  child: Text('Pay'),
-                  onPressed: () {
-                    var unifiedOrderBean = UnifiedOrderBean(
-                      //merchantId
-                        "000000000000003",
-                        //sub_merchantId
-                        "188001000000086",
-                        //out_trade_no
-                        Utils.getSystemFormatTime() + Utils.getRandomNumStr(4),
-                        //currency
-                        'EUR',
-                        //total_fee
-                        "100000",
-                        //pay_type
-                        '2',
-                        //card_token
-                        "",
-                        //client_date
-                        Utils.getSystemTime(),
-                        //sub_mch_notify_url
-                        "http://www.paytend.com",
-                        //body
-                        "12102132151515",
-                        //nonce_str
-                        Utils.getRandomStr(32));
-                    PayApi.instance.pay(context, unifiedOrderBean, (code, value) {
-                      Utils.log('code==>$code,value==>$value');
-                    });
-                  },
-                ),
-              ],
-            )),
+          children: [
+            RaisedButton(
+              child: Text('Pay'),
+              onPressed: () {
+                var unifiedOrderBean = UnifiedOrderBean(
+                    //merchantId
+                    "000000000000003",
+                    //sub_merchantId
+                    "188001000000086",
+                    //out_trade_no
+                    Utils.getSystemFormatTime() + Utils.getRandomNumStr(4),
+                    //currency
+                    'EUR',
+                    //total_fee
+                    "100000",
+                    //pay_type
+                    '2',
+                    //card_token
+                    "",
+                    //client_date
+                    Utils.getSystemTime(),
+                    //sub_mch_notify_url
+                    "http://www.paytend.com",
+                    //body
+                    "12102132151515",
+                    //nonce_str
+                    Utils.getRandomStr(32));
+                PaytendPaySdk.pay(context, unifiedOrderBean, (code, value) {
+                  Utils.log('code==>$code,value==>$value');
+                });
+              },
+            ),
+          ],
+        )),
       ),
     );
   }

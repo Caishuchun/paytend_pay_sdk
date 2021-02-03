@@ -14,9 +14,6 @@ class TextWithTopBottom extends StatefulWidget {
 }
 
 class _TextWithTopBottomState extends State<TextWithTopBottom> {
-  // String hintText;
-  // String valueText;
-  // bool isShowError;
 
   _isShowTop() {
     return widget.valueText != widget.hintText;

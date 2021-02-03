@@ -1,15 +1,10 @@
 # paytend_pay_sdk
 
-A new Flutter plugin.
+This is paytendPay SDK.
 
-## Getting Started
+## Use
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+### 1. Just use paytend_pay_sdk.drat
+### 2. paytend_pay_sdk.pay(context,unifiedOrderBean,_payListener)
+### 3. UnifiedOrderBean need enter info
+### 4. PayListener has "code" and "result",This is a map."code" : 0 SUCCESS,-1 FAIL,2 CANCEL;"result" : dynamic, is Map/String/...
