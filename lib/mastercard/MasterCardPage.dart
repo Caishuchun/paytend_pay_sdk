@@ -226,11 +226,9 @@ class _HomeState extends State<Home> {
       result =
           "${amount.substring(0, amount.length - 2)}.${amount.substring(amount.length - 2, amount.length)}";
     }
-    Utils.log(result);
     String num = result.split(".")[0];
     num = _formatAmount2(num);
     result = "$num.${result.split('.')[1]}";
-    Utils.log(result);
     return result;
   }
 
