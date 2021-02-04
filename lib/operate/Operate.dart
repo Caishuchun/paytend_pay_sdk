@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:paytend_pay_sdk/api/UnifiedOrderBean.dart';
 import 'package:paytend_pay_sdk/bean/Request4UnifiedOrder.dart';
 import 'package:paytend_pay_sdk/bean/Response4UnifiedOrder.dart';
+import 'package:paytend_pay_sdk/bean/UnifiedOrderBean.dart';
 import 'package:paytend_pay_sdk/dialog/DialogUtils.dart';
 import 'package:paytend_pay_sdk/http/DioConfig.dart';
 import 'package:paytend_pay_sdk/http/DioUtils.dart';
@@ -29,11 +29,58 @@ class Operate {
 
   void pay(BuildContext context, UnifiedOrderBean unifiedOrderBean,
       PayListener _payListener) {
-    if (unifiedOrderBean != null && unifiedOrderBean.pay_type == "1") {
-      _toUnifiedOrder(context, unifiedOrderBean, _payListener);
-    } else if (unifiedOrderBean != null && unifiedOrderBean.pay_type != "1") {
-      _toSelectType(context, unifiedOrderBean, _payListener);
+    var toCheck = _toCheck(unifiedOrderBean);
+    if (toCheck["code"] == 0) {
+      if (unifiedOrderBean != null && unifiedOrderBean.pay_type == "1") {
+        _toUnifiedOrder(context, unifiedOrderBean, _payListener);
+      } else if (unifiedOrderBean != null && unifiedOrderBean.pay_type != "1") {
+        _toSelectType(context, unifiedOrderBean, _payListener);
+      }
+    } else {
+      _payListener(-1, toCheck["result"]);
     }
+  }
+
+  _toCheck(UnifiedOrderBean unifiedOrderBean) {
+    if (unifiedOrderBean == null) {
+      return {"code": -1, "result": "unifiedOrderBean is null"};
+    } else {
+      if (unifiedOrderBean.merchantId == null ||
+          unifiedOrderBean.merchantId == "") {
+        return {"code": -1, "result": "invalid merchantId"};
+      }
+      if (unifiedOrderBean.sub_merchantId == null ||
+          unifiedOrderBean.sub_merchantId == "") {
+        return {"code": -1, "result": "invalid sub_merchantId"};
+      }
+      if (unifiedOrderBean.out_trade_no == null ||
+          unifiedOrderBean.out_trade_no == "") {
+        return {"code": -1, "result": "invalid out_trade_no"};
+      }
+      if (unifiedOrderBean.currency == null ||
+          unifiedOrderBean.currency == "") {
+        return {"code": -1, "result": "invalid currency"};
+      }
+      if (unifiedOrderBean.total_fee == null ||
+          unifiedOrderBean.total_fee == "") {
+        return {"code": -1, "result": "invalid total_fee"};
+      }
+      // if(unifiedOrderBean.pay_type==null || unifiedOrderBean.pay_type ==""){
+      //   return {"code":-1,"result":"invalid pay_type"};
+      // }
+      if (unifiedOrderBean.client_date == null ||
+          unifiedOrderBean.client_date == "") {
+        return {"code": -1, "result": "invalid client_date"};
+      }
+      if (unifiedOrderBean.sub_mch_notify_url == null ||
+          unifiedOrderBean.sub_mch_notify_url == "") {
+        return {"code": -1, "result": "invalid sub_mch_notify_url"};
+      }
+      if (unifiedOrderBean.body == null || unifiedOrderBean.body == "") {
+        return {"code": -1, "result": "invalid body"};
+      }
+    }
+    return {"code": 0, "result": "values is sure"};
   }
 
   _toSelectType(BuildContext context, UnifiedOrderBean unifiedOrderBean,

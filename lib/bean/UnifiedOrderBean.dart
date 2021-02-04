@@ -5,7 +5,7 @@ class UnifiedOrderBean {
   String currency; //币种,暂时仅支持EUR
   String total_fee; //订单金额，单位为分，只能是整数
   String pay_type; //支付方式，1：万事达卡快捷
-  String card_token; //币种,暂时仅支持EUR
+  String card_token; //pay_type=1时生效，pay_type=1时生效，卡Token
   String client_date; //YYYY-MM-DD HH:mm:ss
   String sub_mch_notify_url; //接收聚财通支付成功通知
   String body; //商品描述
