@@ -1,6 +1,6 @@
 # paytend_pay_sdk
 
-这是paytendPaySDK
+这是paytendPaySDK(Flutter版本)
 
 ## 使用方式
 
