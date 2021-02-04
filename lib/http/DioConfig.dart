@@ -1,6 +1,5 @@
 class DioConfig {
-  // static const String baseURL = "https://pos.paytend.com/api";
-  static const String baseURL = "http://218.97.161.247:8055/api/pay";
+  static const String baseURL = "https://pos.paytend.com/api/pay";
   static const int connectTimeOut = 10000; //毫秒
   static const int sendTimeOut = 10000; //毫秒
   static const int receiveTimeOut = 10000; //毫秒
