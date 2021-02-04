@@ -10,6 +10,7 @@ class UnifiedOrderBean {
   String sub_mch_notify_url; //接收聚财通支付成功通知
   String body; //商品描述
   String nonce_str; //32位的随机字符串
+  String key;
 
   UnifiedOrderBean(
       this.merchantId,
@@ -22,5 +23,6 @@ class UnifiedOrderBean {
       this.client_date,
       this.sub_mch_notify_url,
       this.body,
-      this.nonce_str);
+      this.nonce_str,
+      this.key);
 }

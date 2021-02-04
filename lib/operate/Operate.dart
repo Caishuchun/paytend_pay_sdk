@@ -79,6 +79,9 @@ class Operate {
       if (unifiedOrderBean.body == null || unifiedOrderBean.body == "") {
         return {"code": -1, "result": "invalid body"};
       }
+      if (unifiedOrderBean.key == null || unifiedOrderBean.key == "") {
+        return {"code": -1, "result": "invalid key"};
+      }
     }
     return {"code": 0, "result": "values is sure"};
   }
@@ -108,7 +111,7 @@ class Operate {
     order.card_token = unifiedOrderBean.card_token; //card_token,如果有会查询卡信息
 
     order.sign =
-        Utils.generateMd5(order.toMapWithoutSign(), "flzs77MFfUg0I63H", false);
+        Utils.generateMd5(order.toMapWithoutSign(), unifiedOrderBean.key, false);
     Utils.log('${order.toMap()}');
 
     DioUtils.request(DioConfig.unifiedOrder, params: order.toMap())

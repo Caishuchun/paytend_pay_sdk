@@ -63,7 +63,9 @@ class _HomeState extends State<Home> {
                     //body 商品描述
                     "12102132151515",
                     //nonce_str 32位的随机字符串
-                    Utils.getRandomStr(32));
+                    Utils.getRandomStr(32),
+                    //key 用户签名key
+                    "flzs77MFfUg0I63H");
                 PaytendPaySdk.pay(context, unifiedOrderBean, (code, value) {
                   Utils.log('code==>$code,value==>$value');
                 });
