@@ -127,29 +127,29 @@ class _TransTypeDialogState extends State<TransTypeDialog> {
               width: double.infinity,
               height: 350,
               color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
                       child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "选择支付方式",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: ResColors.BLACK_333333,
-                          ),
-                        ),
-                      )
+                    padding: const EdgeInsets.only(left: 15),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "选择支付方式",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: ResColors.BLACK_333333,
+                      ),
                     ),
-                    Column(
+                  )),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15,right: 15),
+                    child: Column(
                       children:
                           _transTypes.map((info) => _getItem(info)).toList(),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
           )
