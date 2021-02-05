@@ -23,4 +23,4 @@
 
 #### 7.  需要注意2: 由于flutter现有版本和flutter_cupertino_date_picker插件不同步,可能会报错"Error: Type 'DiagnosticableMixin' not found.",处理方式为:
 
-	找到MasterCardPage.dart=>找到DateTimePickerTheme==>将DiagnosticableMixin修改为Diagnosticable即可
+	找到MasterCardPage.dart=>找到DateTimePickerTheme.dart==>将DiagnosticableMixin修改为Diagnosticable即可
