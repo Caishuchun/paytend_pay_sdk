@@ -1,6 +1,6 @@
 name: paytend_pay_sdk
-description: paytend pay sdk for flutter
-version: 1.0.5
+description: paytend_pay_sdk for flutter
+version: 1.0.6
 homepage: https://github.com/Caishuchun/paytend_pay_sdk.git
 
 environment:

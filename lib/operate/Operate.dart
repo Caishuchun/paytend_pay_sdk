@@ -110,8 +110,8 @@ class Operate {
     order.nonce_str = unifiedOrderBean.nonce_str;
     order.card_token = unifiedOrderBean.card_token; //card_token,如果有会查询卡信息
 
-    order.sign =
-        Utils.generateMd5(order.toMapWithoutSign(), unifiedOrderBean.key, false);
+    order.sign = Utils.generateMd5(
+        order.toMapWithoutSign(), unifiedOrderBean.key, false);
     Utils.log('${order.toMap()}');
 
     DioUtils.request(DioConfig.unifiedOrder, params: order.toMap())

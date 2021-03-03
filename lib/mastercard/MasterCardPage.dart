@@ -57,6 +57,7 @@ class _HomeState extends State<Home> {
   String _cardNo;
   String _cvv;
   String _valid;
+  String _valid_date;
   String _holderSave;
   String _cardNoSave;
   String _cvvSave;
@@ -274,6 +275,8 @@ class _HomeState extends State<Home> {
         setState(() {
           _isShowValidError = false;
           _valid = '$month-$year';
+          _valid_date = dateTime.toString().split(' ')[0].substring(0,7);
+          _valid_date="${_valid_date.split("-")[1]}-${_valid_date.split("-")[0]}";
         });
       },
     );
@@ -309,12 +312,12 @@ class _HomeState extends State<Home> {
       });
     }
     if (isSure) {
-      _toPay(request, response, _holder, _cardNo, _cvv, _valid);
+      _toPay(request, response, _holder, _cardNo, _cvv, _valid_date);
     }
   }
 
   _toPay(Request4UnifiedOrder request, Response4UnifiedOrder response,
-      String holder, String cardNo, String cvv, String valid) {
+      String holder, String cardNo, String cvv, String validDate) {
     DialogUtils.showLoading(context);
     var sendQpay = Request4SendQpay();
     sendQpay.merchantId = response.merchantId;
@@ -322,10 +325,10 @@ class _HomeState extends State<Home> {
     sendQpay.out_trade_no = response.out_trade_no;
     sendQpay.currency = response.currency;
     sendQpay.total_fee = response.total_fee;
-    sendQpay.card_no = holder;
-    sendQpay.name = cardNo;
+    sendQpay.card_no = cardNo;
+    sendQpay.name = holder;
     sendQpay.cvv = cvv;
-    sendQpay.expired_date = valid;
+    sendQpay.expired_date = validDate;
     sendQpay.mobile = "";
     sendQpay.card_token = "";
     sendQpay.body = request.body;
@@ -351,7 +354,8 @@ class _HomeState extends State<Home> {
           widget._payListener(0, result['return_code']);
         } else if (result['return_code'] != null &&
             result['return_code'] != 'SUCCESS') {
-          _toQuery(response);
+          DialogUtils.dismissDialog(context);
+          widget._payListener(-1, result);
         } else {
           DialogUtils.dismissDialog(context);
           widget._payListener(-1, "网络异常,请检查网络");
@@ -373,7 +377,7 @@ class _HomeState extends State<Home> {
               error.message.contains("timed out") ||
               error.message.contains("timedout") ||
               error.message.contains("timeout"))) {
-        widget._payListener(-1, "超时");
+        _toQuery(response);
       } else {
         widget._payListener(-1, "${error?.message}");
       }
