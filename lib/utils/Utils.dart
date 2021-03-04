@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:paytend_pay_sdk/utils/Toast.dart';
 
-import 'DateUtils.dart';
+import 'MyDateUtils.dart';
 import 'MD5Utils.dart';
 import 'RandomUtils.dart';
 
@@ -17,12 +17,12 @@ class Utils {
 
   ///获取系统时间,格式:YYYY-MM-DD HH:mm:ss
   static String getSystemTime() {
-    return DateUtils.getSystemTime();
+    return MyDateUtils.getSystemTime();
   }
 
   ///获取系统时间,格式:YYYYMMDDHHmmss
   static String getSystemFormatTime() {
-    return DateUtils.getSystemFormatTime();
+    return MyDateUtils.getSystemFormatTime();
   }
 
   ///获取随机字符串,仅包含数字

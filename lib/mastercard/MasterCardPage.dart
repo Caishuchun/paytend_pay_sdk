@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:paytend_pay_sdk/bean/Request4QueryOrder.dart';
 import 'package:paytend_pay_sdk/bean/Request4SendQpay.dart';
@@ -20,8 +21,8 @@ class MasterCardPage extends StatelessWidget {
   final Response4UnifiedOrder response4unifiedOrder;
   final PayListener _payListener;
 
-  MasterCardPage(
-      this.request4unifiedOrder, this.response4unifiedOrder, this._payListener);
+  MasterCardPage(this.request4unifiedOrder, this.response4unifiedOrder,
+      this._payListener);
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +46,8 @@ class Home extends StatefulWidget {
   final Response4UnifiedOrder response4unifiedOrder;
   final PayListener _payListener;
 
-  Home(
-      this.request4unifiedOrder, this.response4unifiedOrder, this._payListener);
+  Home(this.request4unifiedOrder, this.response4unifiedOrder,
+      this._payListener);
 
   @override
   _HomeState createState() => _HomeState();
@@ -181,13 +182,13 @@ class _HomeState extends State<Home> {
             ),
             Expanded(
                 child: GestureDetector(
-              child: TextWithTopBottom(
-                hintText: "有效期",
-                valueText: _valid == null ? "有效期" : _valid,
-                isShowError: _isShowValidError,
-              ),
-              onTap: _toShowDateDialog,
-            )),
+                  child: TextWithTopBottom(
+                    hintText: "有效期",
+                    valueText: _valid == null ? "有效期" : _valid,
+                    isShowError: _isShowValidError,
+                  ),
+                  onTap: _toShowDateDialog,
+                )),
           ],
         ),
         SizedBox(
@@ -225,7 +226,8 @@ class _HomeState extends State<Home> {
       result = "0.$amount";
     } else {
       result =
-          "${amount.substring(0, amount.length - 2)}.${amount.substring(amount.length - 2, amount.length)}";
+      "${amount.substring(0, amount.length - 2)}.${amount.substring(
+          amount.length - 2, amount.length)}";
     }
     String num = result.split(".")[0];
     num = _formatAmount2(num);
@@ -237,9 +239,12 @@ class _HomeState extends State<Home> {
     if (num.length < 3) {
       return num;
     } else if (num.length < 6) {
-      return "${num.substring(0, num.length - 3)},${num.substring(num.length - 3, num.length)}";
+      return "${num.substring(0, num.length - 3)},${num.substring(
+          num.length - 3, num.length)}";
     } else if (num.length < 9) {
-      return "${num.substring(0, num.length - 6)},${num.substring(num.length - 6, num.length - 3)},${num.substring(num.length - 3, num.length)}";
+      return "${num.substring(0, num.length - 6)},${num.substring(
+          num.length - 6, num.length - 3)},${num.substring(
+          num.length - 3, num.length)}";
     }
   }
 
@@ -259,7 +264,7 @@ class _HomeState extends State<Home> {
       //     cancel: Text('取消',style:TextStyle(color:Colors.cyan))
       // ),
       minDateTime: DateTime.parse("1970-01-01"),
-      maxDateTime: DateTime.parse("2050-01-01"),
+      maxDateTime: DateTime.parse("2100-01-01"),
       initialDateTime: DateTime.now(),
       // 显示日期
       // dateFormat: "yyyy-MMMM-dd",

@@ -1,4 +1,4 @@
-class DateUtils {
+class MyDateUtils {
   //YYYY-MM-DD HH:mm:ss
   static String getSystemTime() {
     DateTime dateTime = DateTime.now();
