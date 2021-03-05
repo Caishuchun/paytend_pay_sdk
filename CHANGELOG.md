@@ -1,3 +1,7 @@
+## 1.1.0
+
+*TODO: 更新到flutter2
+
 ## 1.0.7
 
 *TODO: 1.更新Flutter SDK到2.0.0

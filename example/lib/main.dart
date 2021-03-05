@@ -41,12 +41,9 @@ class _HomeState extends State<Home> {
               child: Text('Pay'),
               onPressed: () {
                 //分配好的商户号,子商户号以及加密key
-                var merchantId = "312008000000406";
-                var sub_merchantId = "312006000008992";
-                var key = "flzs77MFfUg0I63H";
-                // var merchantId = Utils.getRandomNumStr(15);
-                // var sub_merchantId = Utils.getRandomNumStr(15);
-                // var key = Utils.getRandomNumStr(15);
+                var merchantId = Utils.getRandomNumStr(15);
+                var sub_merchantId = Utils.getRandomNumStr(15);
+                var key = Utils.getRandomNumStr(15);
                 var unifiedOrderBean = UnifiedOrderBean(
                     //merchantId 商户号
                     merchantId,
